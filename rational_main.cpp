@@ -7,79 +7,67 @@
 
 Rational Read(Rational x) {
 	int a, b;
-	std::cout << "a: ";
+	std::cout << "Zahler: ";
 	std::cin >> a;
-	std::cout << "b: ";
+	std::cout << "Nenner: ";
 	std::cin >> b;
 	x.setZahler(a);
 	x.setNenner(b);
 	return x;
 }
 
-void Show(Rational x) {
-	if (x.getNenner() == 0) {
-		std::cout << "Der Nenner kann nicht NULL sein!";
-	}
-	else {
-		if (x.getNenner() == 1) {
-			std::cout << x.getZahler();
-		}
-		else
-		if (x.getZahler() == 0) {
-			std::cout << "0";
-		}
-		else {
-			std::cout << x.getZahler() << " / " << x.getNenner();
-		}
-	}
-}
+
 
 void add(Rational x) {
 	Rational y, suma;
 	y = Read(y);
-	Show(x);
+	x.show_rational();
 	std::cout << " +" << std::endl;
-	Show(y);
+	y.show_rational();
 	std::cout << std::endl << "____" << std::endl;
 
-	suma = x.Add(y);
-	Show(suma);
+	suma = x + y;
+	suma.show_rational();
 }
 
 void mult(Rational x) {
 	Rational y, rezultat;
 	y = Read(y);
-	Show(x);
+	x.show_rational();
 	std::cout << " *" << std::endl;
-	Show(y);
+	y.show_rational();
 	std::cout << std::endl << "____" << std::endl;
 
-	rezultat = x.Mult(y);
-	Show(rezultat);
+	rezultat = x * y;
+	rezultat.show_rational();
 }
 
 void quot(Rational x) {
 	Rational y, rezultat;
 	y = Read(y);
-	Show(x);
+	x.show_rational();
 	std::cout << " :" << std::endl;
-	Show(y);
+	y.show_rational();
 	std::cout << std::endl << "____" << std::endl;
 
-	rezultat = x.Quot(y);
-	Show(rezultat);
+	rezultat = x / y;
+	rezultat.show_rational();
 }
 
 
 int main()
 {
-	Rational x;
+	Rational x, y, suma;
 	x = Read(x);
+	std::cout << std::endl << "FORMA RATIONALA" << std::endl;
+	x.show_rational();
+	std::cout << std::endl << "ADUNARE" << std::endl;
 	add(x);
-	std::cout << std::endl;
+	std::cout << std::endl << "INMULTIRE" << std::endl;
 	mult(x);
-	std::cout << std::endl;
+	std::cout << std::endl << "IMPARTIRE" << std::endl;
 	quot(x);
+	std::cout << std::endl << "BYE-BYE! :)" << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

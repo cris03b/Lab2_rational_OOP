@@ -37,7 +37,25 @@ void Rational::setNenner(int nenner) {
 	this->nenner = nenner;
 }
 
-Rational Rational::Add(Rational y) {
+void Rational::show_rational() {
+	if (getNenner() == 0) {
+		std::cout << "Der Nenner kann nicht NULL sein!";
+	}
+	else {
+		if (getNenner() == 1) {
+			std::cout << getZahler();
+		}
+		else
+			if (getZahler() == 0) {
+				std::cout << "0";
+			}
+			else {
+				std::cout << getZahler() << " / " << getNenner();
+			}
+	}
+}
+
+Rational Rational::operator+ (Rational y) {
 	Rational suma;
 	suma.zahler = zahler * y.nenner + y.zahler * nenner;
 	suma.nenner = nenner * y.nenner;
@@ -46,7 +64,7 @@ Rational Rational::Add(Rational y) {
 	return suma;
 }
 
-Rational Rational::Mult(Rational y) {
+Rational Rational::operator* (Rational y) {
 	Rational rezultat;
 	rezultat.zahler = zahler * y.zahler;
 	rezultat.nenner = nenner * y.nenner;
@@ -54,7 +72,7 @@ Rational Rational::Mult(Rational y) {
 	return rezultat;
 }
 
-Rational Rational::Quot(Rational y) {
+Rational Rational::operator/ (Rational y) {
 	Rational rezultat;
 	rezultat.zahler = zahler * y.nenner;
 	rezultat.nenner = y.zahler * nenner;

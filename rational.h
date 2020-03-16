@@ -16,10 +16,10 @@ public:
 	void setNenner(int nenner);
 
 
-
-	Rational Add(Rational x);
-	Rational Mult(Rational x);
-	Rational Quot(Rational x);
+	void show_rational();
+	Rational operator+ (Rational x);
+	Rational operator* (Rational x);
+	Rational operator/ (Rational x);
 	Rational Simplify();
 
 };
