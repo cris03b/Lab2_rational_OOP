@@ -4,17 +4,19 @@
 
 
 Rational::Rational() {
+	//Konstruktor ohne Parameter
 	zahler = 0;
 	nenner = 0;
 }
 
 Rational::Rational(int zahler, int nenner) {
+	//Konstruktor mit 2 Parameter
 	this->zahler = zahler;
 	this->nenner = nenner;
 }
 
 Rational::~Rational() {
-
+	//Destruktor
 }
 
 // getter
@@ -38,10 +40,10 @@ void Rational::setNenner(int nenner) {
 }
 
 void Rational::show_rational() {
-	if (getNenner() == 0) {
-		std::cout << "Der Nenner kann nicht NULL sein!";
-	}
-	else {
+	//Zeigt die Zahlen in rationaler Form
+	Rational r;
+	r.setZahler(getZahler());
+	r.setNenner(getNenner());
 		if (getNenner() == 1) {
 			std::cout << getZahler();
 		}
@@ -50,21 +52,22 @@ void Rational::show_rational() {
 				std::cout << "0";
 			}
 			else {
-				std::cout << getZahler() << " / " << getNenner();
+				r = r.Simplify();
+				std::cout << r.getZahler() << " / " << r.getNenner();
 			}
-	}
 }
 
 Rational Rational::operator+ (Rational y) {
+	//implementiert den + Operator
 	Rational suma;
 	suma.zahler = zahler * y.nenner + y.zahler * nenner;
 	suma.nenner = nenner * y.nenner;
 	suma = suma.Simplify();
-	//std::cout << suma.getZahler() << " " << suma.getNenner();
 	return suma;
 }
 
 Rational Rational::operator* (Rational y) {
+	//implementiert den * Operator
 	Rational rezultat;
 	rezultat.zahler = zahler * y.zahler;
 	rezultat.nenner = nenner * y.nenner;
@@ -73,6 +76,7 @@ Rational Rational::operator* (Rational y) {
 }
 
 Rational Rational::operator/ (Rational y) {
+	//implementiert den / Operator
 	Rational rezultat;
 	rezultat.zahler = zahler * y.nenner;
 	rezultat.nenner = y.zahler * nenner;
@@ -81,6 +85,7 @@ Rational Rational::operator/ (Rational y) {
 }
 
 Rational Rational::Simplify() {
+	//Kurzt die Bruche durch den GGT des Zahlers mit dem Nenner
 	Rational r;
 	int z, a, b;
 	a = getZahler();
